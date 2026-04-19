@@ -9,25 +9,25 @@ const recentPosts = [
     id: 1,
     title: 'Lorem ipsum dolo conse tetur adi.',
     date: '22 Aug, 2021',
-    image: '/img/blog/blog-small1.png',
+    image: '/img/blog/blog-small1.webp',
   },
   {
     id: 2,
     title: 'Lorem ipsum dolor sit, elit, is .',
     date: '22 Aug, 2021',
-    image: '/img/blog/blog-small2.png',
+    image: '/img/blog/blog-small2.webp',
   },
   {
     id: 3,
     title: 'harum dolorum culpa quas are',
     date: '22 Aug, 2021',
-    image: '/img/blog/blog-small3.png',
+    image: '/img/blog/blog-small3.webp',
   },
   {
     id: 4,
     title: 'Lorem ipsum dolo conse tetur adi.',
     date: '22 Aug, 2021',
-    image: '/img/blog/blog-small4.png',
+    image: '/img/blog/blog-small4.webp',
   },
 ];
 
@@ -76,7 +76,7 @@ export default function BlogSidebar() {
             <div className="recent_post_list d-flex" key={post.id}>
               <div className="recent_post_thumb">
                 <Link href="/blog/lorem-ipsum">
-                  <img src={post.image} alt={post.title} />
+                  <Image src={post.image} alt={post.title} width={100} height={100} />
                 </Link>
               </div>
               <div className="recent_post_content">

@@ -1,18 +1,19 @@
 'use client';
 import React from 'react';
 import Slider from 'react-slick';
+import Image from 'next/image';
 
 // Slick css
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const brands = [
-  { img: '/img/others/brand1.png', hoverImg: '/img/others/brand-hover1.png' },
-  { img: '/img/others/brand2.png', hoverImg: '/img/others/brand-hover2.png' },
-  { img: '/img/others/brand3.png', hoverImg: '/img/others/brand-hover3.png' },
-  { img: '/img/others/brand4.png', hoverImg: '/img/others/brand-hover4.png' },
-  { img: '/img/others/brand5.png', hoverImg: '/img/others/brand-hover5.png' },
-  { img: '/img/others/brand1.png', hoverImg: '/img/others/brand-hover1.png' },
+  { img: '/img/others/brand1.webp', hoverImg: '/img/others/brand-hover1.webp' },
+  { img: '/img/others/brand2.webp', hoverImg: '/img/others/brand-hover2.webp' },
+  { img: '/img/others/brand3.webp', hoverImg: '/img/others/brand-hover3.webp' },
+  { img: '/img/others/brand4.webp', hoverImg: '/img/others/brand-hover4.webp' },
+  { img: '/img/others/brand5.webp', hoverImg: '/img/others/brand-hover5.webp' },
+  { img: '/img/others/brand1.webp', hoverImg: '/img/others/brand-hover1.webp' },
 ];
 
 export default function Brands() {
@@ -42,8 +43,12 @@ export default function Brands() {
                 {brands.map((brand, idx) => (
                   <div key={idx}>
                     <div className="single_brand">
-                      <a className="primary" href="#"><img src={brand.img} alt="" /></a>
-                      <a className="secondary" href="#"><img src={brand.hoverImg} alt="" /></a>
+                      <a className="primary" href="#">
+                        <Image src={brand.img} alt="Brand" width={114} height={107} />
+                      </a>
+                      <a className="secondary" href="#">
+                        <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
+                      </a>
                     </div>
                   </div>
                 ))}

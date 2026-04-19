@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Slider from 'react-slick';
 
 // Slick css
@@ -9,34 +10,34 @@ import "slick-carousel/slick/slick-theme.css";
 
 const productsData = {
   features: [
-    { id: 1, name: 'Products Name Here', image: '/img/product/product1.png' },
-    { id: 2, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.png' },
-    { id: 3, name: 'Praesentium vero nesciu.', image: '/img/product/product3.png' },
-    { id: 4, name: 'Sit amet consectetur elit.', image: '/img/product/product4.png' },
-    { id: 5, name: 'Atque earum ullam non.', image: '/img/product/product3.png' },
-    { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product3.png' },
-    { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product1.png' },
-    { id: 8, name: 'Products Name Here', image: '/img/product/product1.png' },
+    { id: 1, name: 'Products Name Here', image: '/img/product/product1.webp' },
+    { id: 2, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.webp' },
+    { id: 3, name: 'Praesentium vero nesciu.', image: '/img/product/product3.webp' },
+    { id: 4, name: 'Sit amet consectetur elit.', image: '/img/product/product4.webp' },
+    { id: 5, name: 'Atque earum ullam non.', image: '/img/product/product3.webp' },
+    { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product3.webp' },
+    { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product1.webp' },
+    { id: 8, name: 'Products Name Here', image: '/img/product/product1.webp' },
   ],
   seller: [
-    { id: 1, name: 'Atque earum ullam non.', image: '/img/product/product5.png' },
-    { id: 2, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.png' },
-    { id: 3, name: 'Provident odio, are Unde.', image: '/img/product/product7.png' },
-    { id: 4, name: 'Products Name Here', image: '/img/product/product1.png' },
-    { id: 5, name: 'Products Name Here', image: '/img/product/product1.png' },
-    { id: 6, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.png' },
-    { id: 7, name: 'Praesentium vero nesciu.', image: '/img/product/product3.png' },
-    { id: 8, name: 'Sit amet consectetur elit.', image: '/img/product/product4.png' },
+    { id: 1, name: 'Atque earum ullam non.', image: '/img/product/product5.webp' },
+    { id: 2, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.webp' },
+    { id: 3, name: 'Provident odio, are Unde.', image: '/img/product/product7.webp' },
+    { id: 4, name: 'Products Name Here', image: '/img/product/product1.webp' },
+    { id: 5, name: 'Products Name Here', image: '/img/product/product1.webp' },
+    { id: 6, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.webp' },
+    { id: 7, name: 'Praesentium vero nesciu.', image: '/img/product/product3.webp' },
+    { id: 8, name: 'Sit amet consectetur elit.', image: '/img/product/product4.webp' },
   ],
   sales: [
-    { id: 1, name: 'Praesentium vero nesciu.', image: '/img/product/product3.png' },
-    { id: 2, name: 'Sit amet consectetur elit.', price: '$32.00', image: '/img/product/product4.png' },
-    { id: 3, name: 'Atque earum ullam non.', image: '/img/product/product5.png' },
-    { id: 4, name: 'Products Name Here', image: '/img/product/product1.png' },
-    { id: 5, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.png' },
-    { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.png' },
-    { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product7.png' },
-    { id: 8, name: 'Products Name Here', image: '/img/product/product1.png' },
+    { id: 1, name: 'Praesentium vero nesciu.', image: '/img/product/product3.webp' },
+    { id: 2, name: 'Sit amet consectetur elit.', price: '$32.00', image: '/img/product/product4.webp' },
+    { id: 3, name: 'Atque earum ullam non.', image: '/img/product/product5.webp' },
+    { id: 4, name: 'Products Name Here', image: '/img/product/product1.webp' },
+    { id: 5, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.webp' },
+    { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.webp' },
+    { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product7.webp' },
+    { id: 8, name: 'Products Name Here', image: '/img/product/product1.webp' },
   ]
 };
 
@@ -77,7 +78,15 @@ export default function ProductTabs() {
                     <article className="single_product">
                       <figure>
                         <div className="product_thumb">
-                          <Link href="/product"><img src={product.image} alt={product.name} /></Link>
+                          <Link href={`/shop/${product.id}`}>
+                            <Image 
+                              src={product.image} 
+                              alt={product.name} 
+                              width={268} 
+                              height={307}
+                              style={{ width: '100%', height: 'auto' }}
+                            />
+                          </Link>
                         </div>
                         <figcaption className="product_content text-center">
                           <h4><Link href="/product">{product.name}</Link></h4>
@@ -102,7 +111,15 @@ export default function ProductTabs() {
                     <article className="single_product">
                       <figure>
                         <div className="product_thumb">
-                          <Link href="/product"><img src={product.image} alt={product.name} /></Link>
+                          <Link href={`/shop/${product.id}`}>
+                            <Image 
+                              src={product.image} 
+                              alt={product.name} 
+                              width={268} 
+                              height={307}
+                              style={{ width: '100%', height: 'auto' }}
+                            />
+                          </Link>
                         </div>
                         <figcaption className="product_content text-center">
                           <h4><Link href="/product">{product.name}</Link></h4>
@@ -127,7 +144,15 @@ export default function ProductTabs() {
                     <article className="single_product">
                       <figure>
                         <div className="product_thumb">
-                          <Link href="/product"><img src={product.image} alt={product.name} /></Link>
+                          <Link href={`/shop/${product.id}`}>
+                            <Image 
+                              src={product.image} 
+                              alt={product.name} 
+                              width={268} 
+                              height={307}
+                              style={{ width: '100%', height: 'auto' }}
+                            />
+                          </Link>
                         </div>
                         <figcaption className="product_content text-center">
                           <h4><Link href="/product">{product.name}</Link></h4>

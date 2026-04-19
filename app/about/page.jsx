@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Brands from '../components/Brands';
@@ -10,9 +11,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const teamMembers = [
-  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team1.png' },
-  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team2.png' },
-  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team3.png' },
+  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team1.webp' },
+  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team2.webp' },
+  { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team3.webp' },
 ];
 
 const testimonials = [
@@ -20,13 +21,13 @@ const testimonials = [
     name: 'Kianna Pham',
     role: 'Customer',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicingl elit, sed do eiusmod tempor incididunt ut laboredolor magna aliqua. Ut enim ad minim veniam, quis nostru exercitation ullamco laboris',
-    img: '/img/others/testimonial-shap-thumb.png'
+    img: '/img/others/testimonial-shap-thumb.webp'
   },
   {
     name: 'Kianna Pham',
     role: 'Customer',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicingl elit, sed do eiusmod tempor incididunt ut laboredolor magna aliqua. Ut enim ad minim veniam, quis nostru exercitation ullamco laboris',
-    img: '/img/others/testimonial-shap-thumb.png'
+    img: '/img/others/testimonial-shap-thumb.webp'
   }
 ];
 
@@ -51,10 +52,16 @@ export default function AboutPage() {
           <div className="row">
             <div className="col-12">
               <div className="about_video_thumb">
-                <img src="/img/bg/about-bg.png" alt="About Video Background" />
+                <Image 
+                  src="/img/bg/about-bg.webp" 
+                  alt="About Video Background" 
+                  width={1170} 
+                  height={550} 
+                  style={{ width: '100%', height: 'auto' }}
+                />
                 <div className="video_paly_icon">
                   <a className="video_popup" href="https://www.youtube.com/watch?v=2Zt8va_6HRk" target="_blank" rel="noopener noreferrer">
-                    <img src="/img/others/video-play.png" alt="Play Video" />
+                    <Image src="/img/others/video-play.webp" alt="Play Video" width={140} height={140} />
                   </a>
                 </div>
               </div>
@@ -106,7 +113,15 @@ export default function AboutPage() {
                 <div className="col-lg-4 col-md-4 col-sm-6" key={idx}>
                   <div className="single_team_member wow fadeInUp" data-wow-delay={`${0.1 * (idx + 1)}s`} data-wow-duration={`${1.0 + 0.1 * (idx + 1)}s`}>
                     <div className="team_thumb">
-                      <a href="#"><img src={member.img} alt={member.name} /></a>
+                      <a href="#">
+                        <Image 
+                          src={member.img} 
+                          alt={member.name} 
+                          width={370} 
+                          height={410} 
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </a>
                       <div className="team_text">
                         <h3>{member.name}</h3>
                         <h4>{member.role}</h4>
@@ -123,7 +138,7 @@ export default function AboutPage() {
       {/* Testimonial Section */}
       <div 
         className="testimonial_section mb-110 wow fadeInUp" 
-        style={{ backgroundImage: 'url(/img/others/testimonial-bg.png)' }}
+        style={{ backgroundImage: 'url(/img/others/testimonial-bg.webp)' }}
         data-wow-delay="0.1s" 
         data-wow-duration="1.1s"
       >
@@ -136,7 +151,7 @@ export default function AboutPage() {
                     <div key={idx}>
                       <div className="testimonial_inner d-flex align-items-center">
                         <div className="testimonial_thumb">
-                          <img src={testi.img} alt="Testimonial Thumb" />
+                          <Image src={testi.img} alt="Testimonial Thumb" width={279} height={339} />
                         </div>
                         <div className="testimonial_content">
                           <div className="testimonial_rating">

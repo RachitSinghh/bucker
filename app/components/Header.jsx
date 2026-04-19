@@ -55,7 +55,15 @@ export default function Header() {
         </div>
         <div className="cart_item">
           <div className="cart_img">
-            <Link href="/shop"><img src="/img/product/mini-product/product1.png" alt="Product" /></Link>
+            <Link href="/shop">
+              <Image 
+                src="/img/product/mini-product/product1.webp" 
+                alt="Product" 
+                width={80} 
+                height={80} 
+                style={{ objectFit: 'cover' }}
+              />
+            </Link>
           </div>
           <div className="cart_info">
             <Link href="/shop">Primis In Faucibus</Link>
@@ -67,7 +75,15 @@ export default function Header() {
         </div>
         <div className="cart_item">
           <div className="cart_img">
-            <Link href="/shop"><img src="/img/product/mini-product/product2.png" alt="Product" /></Link>
+            <Link href="/shop">
+              <Image 
+                src="/img/product/mini-product/product2.webp" 
+                alt="Product" 
+                width={80} 
+                height={80} 
+                style={{ objectFit: 'cover' }}
+              />
+            </Link>
           </div>
           <div className="cart_info">
             <Link href="/shop">Letraset Sheets</Link>
@@ -197,7 +213,13 @@ export default function Header() {
               <div className="main_header d-flex justify-content-between align-items-center">
                 <div className="header_logo">
                   <Link href="/">
-                    <img src="/img/logo/logo.png" alt="JD Milk Logo" />
+                    <Image 
+                      src="/img/logo/logo.webp" 
+                      alt="JD Milk Logo" 
+                      width={132} 
+                      height={80} 
+                      priority
+                    />
                   </Link>
                 </div>
                 {/* main menu start */}

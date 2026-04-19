@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Slider from 'react-slick';
 
 // Slick css
@@ -8,14 +9,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const products = [
-  { id: 1, name: 'Products Name Here', image: '/img/product/product1.png' },
-  { id: 2, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.png' },
-  { id: 3, name: 'Praesentium vero nesciu.', image: '/img/product/product3.png' },
-  { id: 4, name: 'Sit amet consectetur elit.', image: '/img/product/product4.png' },
-  { id: 5, name: 'Atque earum ullam non.', image: '/img/product/product5.png' },
-  { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.png' },
-  { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product7.png' },
-  { id: 8, name: 'Products Name Here', image: '/img/product/product1.png' }
+  { id: 1, name: 'Products Name Here', image: '/img/product/product1.webp' },
+  { id: 2, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.webp' },
+  { id: 3, name: 'Praesentium vero nesciu.', image: '/img/product/product3.webp' },
+  { id: 4, name: 'Sit amet consectetur elit.', image: '/img/product/product4.webp' },
+  { id: 5, name: 'Atque earum ullam non.', image: '/img/product/product5.webp' },
+  { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.webp' },
+  { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product7.webp' },
+  { id: 8, name: 'Products Name Here', image: '/img/product/product1.webp' }
 ];
 
 export default function BestSellers() {
@@ -50,7 +51,15 @@ export default function BestSellers() {
                 <article className="single_product">
                   <figure>
                     <div className="product_thumb">
-                      <Link href="/product"><img src={product.image} alt={product.name} /></Link>
+                      <Link href="/shop/1">
+                        <Image 
+                          src={product.image} 
+                          alt={product.name} 
+                          width={268} 
+                          height={307} 
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </Link>
                     </div>
                     <figcaption className="product_content text-center">
                       <h4><Link href="/product">{product.name}</Link></h4>

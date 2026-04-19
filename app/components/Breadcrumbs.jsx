@@ -6,7 +6,7 @@ export default function Breadcrumbs({ title, parentTitle = 'Home', parentHref = 
   return (
     <div 
       className="breadcrumbs_aree breadcrumbs_bg mb-110" 
-      style={{ backgroundImage: 'url(/img/others/breadcrumbs-bg.png)' }}
+      style={{ backgroundImage: 'url(/img/others/breadcrumbs-bg.webp)' }}
     >
       <div className="container">
         <div className="row">

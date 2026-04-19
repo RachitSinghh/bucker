@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogCard({ image, category, title, author, date, metaImage, delay }) {
   return (
@@ -13,7 +14,13 @@ export default function BlogCard({ image, category, title, author, date, metaIma
       >
         <div className="blog_thumb">
           <Link href="/blog/lorem-ipsum">
-            <img src={image} alt={title} />
+            <Image 
+              src={image} 
+              alt={title} 
+              width={370} 
+              height={250} 
+              style={{ width: '100%', height: 'auto' }}
+            />
           </Link>
         </div>
         <div className="blog_content">
@@ -28,7 +35,7 @@ export default function BlogCard({ image, category, title, author, date, metaIma
           </h3>
           <div className="blog__meta d-flex align-items-center">
             <div className="blog__meta__thumb">
-              <img src={metaImage} alt={author} />
+              <Image src={metaImage} alt={author} width={36} height={36} />
             </div>
             <div className="blog__meta__text">
               <ul className="d-flex">

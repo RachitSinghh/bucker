@@ -9,62 +9,62 @@ import BlogCard from '../components/BlogCard';
 const blogPosts = [
   {
     id: 1,
-    image: '/img/blog/blog1.png',
+    image: '/img/blog/blog1.webp',
     category: 'Brakery',
     title: 'Lorem ipsum dolor sit amet adi pisi cing elit.',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     delay: '0.1s'
   },
   {
     id: 2,
-    image: '/img/blog/blog2.png',
+    image: '/img/blog/blog2.webp',
     category: 'Brakery',
     title: 'Lorem ipsum dolor sit, elit, dolores is .',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img2.png',
+    metaImage: '/img/others/meta-img2.webp',
     delay: '0.2s'
   },
   {
     id: 3,
-    image: '/img/blog/blog3.png',
+    image: '/img/blog/blog3.webp',
     category: 'Brakery',
     title: 'harum dolorum culpa quas are veniam',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img3.png',
+    metaImage: '/img/others/meta-img3.webp',
     delay: '0.3s'
   },
   {
     id: 4,
-    image: '/img/blog/blog4.png',
+    image: '/img/blog/blog4.webp',
     category: 'Brakery',
     title: 'There are many of Lorem Ipsum.',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     delay: '0.1s'
   },
   {
     id: 5,
-    image: '/img/blog/blog5.png',
+    image: '/img/blog/blog5.webp',
     category: 'Brakery',
     title: 'Lorem ipsum doloril sit amet consepy.',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     delay: '0.1s'
   },
   {
     id: 6,
-    image: '/img/blog/blog6.png',
+    image: '/img/blog/blog6.webp',
     category: 'Brakery',
     title: 'Lorem ipsum dolor sit amet adi pisi cing elit.',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     delay: '0.1s'
   }
 ];

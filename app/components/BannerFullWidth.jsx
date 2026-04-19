@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function BannerFullWidth() {
   return (
-    <div className="banner_fullwidth_section mb-105" style={{ backgroundImage: "url('/img/bg/banner-fullwidth1.png')" }}>
+    <div className="banner_fullwidth_section mb-105" style={{ backgroundImage: "url('/img/bg/banner-fullwidth1.webp')" }}>
       <div className="container">
         <div className="row">
           <div className="col-12">

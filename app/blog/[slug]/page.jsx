@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import BlogSidebar from '../../components/BlogSidebar';
@@ -19,7 +20,14 @@ export default function BlogDetailPage() {
             <div className="col-lg-8 order-1 order-lg-2">
               <div className="blog_details_left">
                 <div className="blog_sticky_thumb">
-                  <img src="/img/blog/blog-sticky.png" alt="Blog Main" />
+                  <Image 
+                    src="/img/blog/blog-sticky.webp" 
+                    alt="Blog Main" 
+                    width={770} 
+                    height={540} 
+                    style={{ width: '100%', height: 'auto' }}
+                    priority 
+                  />
                 </div>
                 <div className="blog_details_content">
                   <span className="brakery">Brakery</span>
@@ -28,7 +36,7 @@ export default function BlogDetailPage() {
                   </div>
                   <div className="blog__meta d-flex align-items-center">
                     <div className="blog__meta__thumb">
-                      <img src="/img/others/meta-img1.png" alt="Admin" />
+                      <Image src="/img/others/meta-img1.webp" alt="Admin" width={36} height={36} />
                     </div>
                     <div className="blog__meta__text">
                       <ul className="d-flex">
@@ -50,7 +58,7 @@ export default function BlogDetailPage() {
                   </div>
                   <div 
                     className="blog_details_blockquote" 
-                    style={{ backgroundImage: 'url(/img/blog/blockcode-bg.png)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                    style={{ backgroundImage: 'url(/img/blog/blockcode-bg.webp)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                   >
                     <blockquote className="blockquote__text text-center">
                       <h4>
@@ -75,12 +83,12 @@ export default function BlogDetailPage() {
                     <div className="row">
                       <div className="col-lg-6 col-md-6 col-sm-6">
                         <div className="blog_related_thumb">
-                          <img src="/img/blog/blog2.png" alt="Related" />
+                          <Image src="/img/blog/blog2.webp" alt="Related" width={370} height={250} style={{ width: '100%', height: 'auto' }} />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6 col-sm-6">
                         <div className="blog_related_thumb">
-                          <img src="/img/blog/blog3.png" alt="Related" />
+                          <Image src="/img/blog/blog3.webp" alt="Related" width={370} height={250} style={{ width: '100%', height: 'auto' }} />
                         </div>
                       </div>
                     </div>
@@ -118,7 +126,7 @@ export default function BlogDetailPage() {
                       </div>
                       <div className="comment_list d-flex">
                         <div className="comment_thumb">
-                          <img src="/img/blog/post-comment1.png" alt="User" />
+                          <Image src="/img/blog/post-comment1.webp" alt="User" width={120} height={120} />
                         </div>
                         <div className="comment_content">
                           <a href="#"><i className="icofont-reply"></i> Reply</a>

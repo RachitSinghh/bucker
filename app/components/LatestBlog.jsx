@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Slider from 'react-slick';
 
 // Slick css
@@ -12,40 +13,40 @@ const blogs = [
     id: 1,
     category: 'Bakery',
     title: 'Lorem ipsum dolor sit amet consepy.',
-    image: '/img/blog/blog1.png',
+    image: '/img/blog/blog1.webp',
     author: 'Admin',
     date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     colorClass: ''
   },
   {
     id: 2,
     category: 'Bakery',
     title: 'Lorem ipsum dolor sit, elit, dolores is .',
-    image: '/img/blog/blog1.png',
+    image: '/img/blog/blog1.webp', // reusing blog1 as template
     author: 'Admin',
     date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img2.png',
+    metaImage: '/img/others/meta-img2.webp',
     colorClass: 'color2'
   },
   {
     id: 3,
     category: 'Bakery',
     title: 'harum dolorum culpa quas are veniam',
-    image: '/img/blog/blog1.png',
+    image: '/img/blog/blog1.webp',
     author: 'Admin',
     date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img3.png',
+    metaImage: '/img/others/meta-img3.webp',
     colorClass: 'color3'
   },
   {
     id: 4,
     category: 'Bakery',
     title: 'There are many of Lorem Ipsum.',
-    image: '/img/blog/blog1.png',
+    image: '/img/blog/blog1.webp',
     author: 'Admin',
     date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.png',
+    metaImage: '/img/others/meta-img1.webp',
     colorClass: ''
   }
 ];
@@ -80,7 +81,15 @@ export default function LatestBlog() {
               <div key={idx} className="px-2">
                 <div className="single_blog">
                   <div className="blog_thumb">
-                    <Link href="/blog-detail"><img src={blog.image} alt={blog.title} /></Link>
+                    <Link href="/blog/lorem-ipsum">
+                      <Image 
+                        src={blog.image} 
+                        alt={blog.title} 
+                        width={370} 
+                        height={260}
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </Link>
                   </div>
                   <div className="blog_content">
                     <div className="blog_arrow_btn">
@@ -90,7 +99,7 @@ export default function LatestBlog() {
                     <h3><Link href="/blog-detail">{blog.title}</Link></h3>
                     <div className="blog__meta d-flex align-items-center">
                       <div className="blog__meta__thumb">
-                        <img src={blog.metaImage} alt="Author" />
+                        <Image src={blog.metaImage} alt="Author" width={40} height={40} />
                       </div>
                       <div className="blog__meta__text">
                         <ul className="d-flex">

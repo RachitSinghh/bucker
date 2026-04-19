@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import Breadcrumbs from '../../components/Breadcrumbs';
 
@@ -48,7 +49,14 @@ export default function ProductDetailPage({ params }) {
                     >
                       {[1, 2, 5, 7, 8].map((num) => (
                         <div className="gallery_img_list" key={num}>
-                          <img src={`/img/product/product${num}.png`} alt={`Product ${num}`} />
+                          <Image 
+                            src={`/img/product/product${num}.webp`} 
+                            alt={`Product ${num}`} 
+                            width={570} 
+                            height={650} 
+                            style={{ width: '100%', height: 'auto' }}
+                            priority={num === 1}
+                          />
                         </div>
                       ))}
                     </Slider>
@@ -61,7 +69,14 @@ export default function ProductDetailPage({ params }) {
                     >
                        {[1, 2, 5, 7, 8].map((num) => (
                         <div className="gallery_btn_img_list" key={num} style={{ cursor: 'pointer', padding: '5px' }}>
-                          <img src={`/img/product/product${num}.png`} alt={`Thumb ${num}`} className="border" />
+                          <Image 
+                            src={`/img/product/product${num}.webp`} 
+                            alt={`Thumb ${num}`} 
+                            width={100} 
+                            height={100} 
+                            className="border"
+                            style={{ width: '100%', height: 'auto' }}
+                          />
                         </div>
                       ))}
                     </Slider>
@@ -99,7 +114,7 @@ export default function ProductDetailPage({ params }) {
                   <button className="btn btn-outline-secondary rounded-0"><i className="pe-7s-like"></i></button>
                 </div>
                 <div className="product_paypal">
-                  <img src="/img/others/paypal.png" alt="payments" />
+                  <Image src="/img/others/paypal.webp" alt="payments" width={192} height={21} />
                 </div>
               </div>
             </div>

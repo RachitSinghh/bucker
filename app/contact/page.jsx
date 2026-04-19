@@ -53,7 +53,7 @@ export default function ContactPage() {
               <div className="col-lg-5 col-md-6">
                 <div 
                   className="contact_form" 
-                  style={{ backgroundImage: 'url(/img/others/contact-form-bg-shape.png)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                  style={{ backgroundImage: 'url(/img/others/contact-form-bg-shape.webp)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 >
                   <h2>Send A Quest</h2>
                   <form onSubmit={handleSubmit(onSubmit)}>

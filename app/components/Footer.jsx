@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
             <div className="col-lg-4 col-md-4 col-sm-6">
               <div className="single_shipping d-flex align-items-center">
                 <div className="shipping_icon">
-                  <img src="/img/others/shipping1.png" alt="" />
+                  <Image src="/img/others/shipping1.webp" alt="Shipping" width={70} height={70} />
                 </div>
                 <div className="shipping_text">
                   <h3>Free Shipping</h3>
@@ -21,7 +22,7 @@ export default function Footer() {
             <div className="col-lg-4 col-md-4 col-sm-6">
               <div className="single_shipping d-flex align-items-center">
                 <div className="shipping_icon">
-                  <img src="/img/others/shipping2.png" alt="" />
+                  <Image src="/img/others/shipping2.webp" alt="Payments" width={70} height={70} />
                 </div>
                 <div className="shipping_text">
                   <h3>Card Payments</h3>
@@ -32,7 +33,7 @@ export default function Footer() {
             <div className="col-lg-4 col-md-4 col-sm-6">
               <div className="single_shipping d-flex align-items-center">
                 <div className="shipping_icon">
-                  <img src="/img/others/shipping3.png" alt="" />
+                  <Image src="/img/others/shipping3.webp" alt="Returns" width={70} height={70} />
                 </div>
                 <div className="shipping_text">
                   <h3>Easy Returns</h3>
@@ -140,7 +141,7 @@ export default function Footer() {
                     </div>
                     <div className="footer_paypal">
                       <a href="#">
-                        <img src="/img/others/paypal.png" alt="" />
+                        <Image src="/img/others/paypal.webp" alt="Payments" width={192} height={21} />
                       </a>
                     </div>
                   </div>

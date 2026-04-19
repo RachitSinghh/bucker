@@ -2,18 +2,19 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ShopSidebar from '../components/ShopSidebar';
 
 const shopProducts = [
-  { id: 1, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product1.png' },
-  { id: 2, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product2.png' },
-  { id: 3, name: 'Modi excepturi ut ipsam.', price: '$38.00', image: '/img/product/product3.png' },
-  { id: 4, name: 'Provident odio, are Unde.', price: '$28.00', image: '/img/product/product4.png' },
-  { id: 5, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product5.png' },
-  { id: 6, name: 'Atque earum ullam non.', price: '$42.00', image: '/img/product/product6.png' },
-  { id: 7, name: 'Modi excepturi ut ipsam.', price: '$38.00', image: '/img/product/product7.png' },
-  { id: 8, name: 'Provident odio, are Unde.', price: '$28.00', image: '/img/product/product8.png' },
+  { id: 1, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product1.webp' },
+  { id: 2, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product2.webp' },
+  { id: 3, name: 'Modi excepturi ut ipsam.', price: '$38.00', image: '/img/product/product3.webp' },
+  { id: 4, name: 'Provident odio, are Unde.', price: '$28.00', image: '/img/product/product4.webp' },
+  { id: 5, name: 'Atque earum ullam non.', price: '$35.00', image: '/img/product/product5.webp' },
+  { id: 6, name: 'Atque earum ullam non.', price: '$42.00', image: '/img/product/product6.webp' },
+  { id: 7, name: 'Modi excepturi ut ipsam.', price: '$38.00', image: '/img/product/product7.webp' },
+  { id: 8, name: 'Provident odio, are Unde.', price: '$28.00', image: '/img/product/product8.webp' },
 ];
 
 export default function ShopPage() {
@@ -83,7 +84,13 @@ export default function ShopPage() {
                             <figure>
                               <div className="product_thumb">
                                 <Link href={`/shop/${product.id}`}>
-                                  <img src={product.image} alt={product.name} />
+                                  <Image 
+                                    src={product.image} 
+                                    alt={product.name} 
+                                    width={268} 
+                                    height={307} 
+                                    style={{ width: '100%', height: 'auto' }}
+                                  />
                                 </Link>
                               </div>
                               <figcaption className="product_content text-center">
@@ -104,7 +111,13 @@ export default function ShopPage() {
                           <figure className="product_list_flex d-flex align-items-center">
                             <div className="product_thumb" style={{ maxWidth: '200px' }}>
                               <Link href={`/shop/${product.id}`}>
-                                <img src={product.image} alt={product.name} />
+                                <Image 
+                                  src={product.image} 
+                                  alt={product.name} 
+                                  width={268} 
+                                  height={307} 
+                                  style={{ width: '100%', height: 'auto' }}
+                                />
                               </Link>
                             </div>
                             <figcaption className="product_list_content ms-4">

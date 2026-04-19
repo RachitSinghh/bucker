@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function HeroBanner() {
   return (
@@ -22,26 +23,33 @@ export default function HeroBanner() {
               </div>
               <div className="col-lg-7">
                 <div className="hero_shape_banner">
-                  <img className="banner_keyframes_animation wow" src="/img/bg/hero-banner-shape.png" alt="Hero Banner" />
+                  <Image 
+                    className="banner_keyframes_animation wow" 
+                    src="/img/bg/hero-banner-shape.webp" 
+                    alt="Hero Banner" 
+                    width={652} 
+                    height={471} 
+                    priority
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="hero_mini_shape shape1">
-          <img src="/img/others/hero-mini-shape1.png" alt="Shape" />
+          <Image src="/img/others/hero-mini-shape1.webp" alt="Shape" width={124} height={122} />
         </div>
         <div className="hero_mini_shape shape2">
-          <img src="/img/others/hero-mini-shape2.png" alt="Shape" />
+          <Image src="/img/others/hero-mini-shape2.webp" alt="Shape" width={89} height={87} />
         </div>
         <div className="hero_mini_shape shape3">
-          <img src="/img/others/hero-mini-shape3.png" alt="Shape" />
+          <Image src="/img/others/hero-mini-shape3.webp" alt="Shape" width={119} height={85} />
         </div>
         <div className="hero_mini_shape shape4">
-          <img src="/img/others/hero-mini-shape4.png" alt="Shape" />
+          <Image src="/img/others/hero-mini-shape4.webp" alt="Shape" width={112} height={83} />
         </div>
         <div className="hero_mini_shape shape5">
-          <img src="/img/others/hero-mini-shape5.png" alt="Shape" />
+          <Image src="/img/others/hero-mini-shape5.webp" alt="Shape" width={155} height={88} />
         </div>
       </div>
     </>
