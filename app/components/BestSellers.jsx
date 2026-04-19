@@ -20,6 +20,11 @@ const products = [
 ];
 
 export default function BestSellers() {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -45,30 +50,32 @@ export default function BestSellers() {
           </p>
         </div>
         <div className="product_slick">
-          <Slider {...settings}>
-            {products.map((product, index) => (
-              <div key={index}>
-                <article className="single_product">
-                  <figure>
-                    <div className="product_thumb">
-                      <Link href="/shop/1">
-                        <Image 
-                          src={product.image} 
-                          alt={product.name} 
-                          width={268} 
-                          height={307} 
-                          style={{ width: '100%', height: 'auto' }}
-                        />
-                      </Link>
-                    </div>
-                    <figcaption className="product_content text-center">
-                      <h4><Link href="/product">{product.name}</Link></h4>
-                    </figcaption>
-                  </figure>
-                </article>
-              </div>
-            ))}
-          </Slider>
+          {mounted && (
+            <Slider {...settings}>
+              {products.map((product, index) => (
+                <div key={index}>
+                  <article className="single_product">
+                    <figure>
+                      <div className="product_thumb">
+                        <Link href="/shop/1">
+                          <Image 
+                            src={product.image} 
+                            alt={product.name} 
+                            width={268} 
+                            height={307} 
+                            style={{ width: '100%', height: 'auto' }}
+                          />
+                        </Link>
+                      </div>
+                      <figcaption className="product_content text-center">
+                        <h4><Link href="/product">{product.name}</Link></h4>
+                      </figcaption>
+                    </figure>
+                  </article>
+                </div>
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
     </div>

@@ -52,6 +52,11 @@ const blogs = [
 ];
 
 export default function LatestBlog() {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -76,43 +81,45 @@ export default function LatestBlog() {
           </p>
         </div>
         <div className="blog_inner">
-          <Slider {...settings}>
-            {blogs.map((blog, idx) => (
-              <div key={idx} className="px-2">
-                <div className="single_blog">
-                  <div className="blog_thumb">
-                    <Link href="/blog/lorem-ipsum">
-                      <Image 
-                        src={blog.image} 
-                        alt={blog.title} 
-                        width={370} 
-                        height={260}
-                        style={{ width: '100%', height: 'auto' }}
-                      />
-                    </Link>
-                  </div>
-                  <div className="blog_content">
-                    <div className="blog_arrow_btn">
-                      <Link href="/blog-detail"><i className="ion-arrow-right-c"></i></Link>
+          {mounted && (
+            <Slider {...settings}>
+              {blogs.map((blog, idx) => (
+                <div key={idx} className="px-2">
+                  <div className="single_blog">
+                    <div className="blog_thumb">
+                      <Link href="/blog/lorem-ipsum">
+                        <Image 
+                          src={blog.image} 
+                          alt={blog.title} 
+                          width={370} 
+                          height={260}
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </Link>
                     </div>
-                    <span className={blog.colorClass}>{blog.category}</span>
-                    <h3><Link href="/blog-detail">{blog.title}</Link></h3>
-                    <div className="blog__meta d-flex align-items-center">
-                      <div className="blog__meta__thumb">
-                        <Image src={blog.metaImage} alt="Author" width={40} height={40} />
+                    <div className="blog_content">
+                      <div className="blog_arrow_btn">
+                        <Link href="/blog-detail"><i className="ion-arrow-right-c"></i></Link>
                       </div>
-                      <div className="blog__meta__text">
-                        <ul className="d-flex">
-                          <li>By: {blog.author}</li>
-                          <li><i className="icofont-calendar"></i> {blog.date}</li>
-                        </ul>
+                      <span className={blog.colorClass}>{blog.category}</span>
+                      <h3><Link href="/blog-detail">{blog.title}</Link></h3>
+                      <div className="blog__meta d-flex align-items-center">
+                        <div className="blog__meta__thumb">
+                          <Image src={blog.metaImage} alt="Author" width={40} height={40} />
+                        </div>
+                        <div className="blog__meta__text">
+                          <ul className="d-flex">
+                            <li>By: {blog.author}</li>
+                            <li><i className="icofont-calendar"></i> {blog.date}</li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
     </div>

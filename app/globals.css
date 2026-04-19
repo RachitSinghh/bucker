@@ -8,3 +8,9 @@
 /* Slick Carousel required base styles */
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
+/* WOW.js elements should be visible even if JS fails to run */
+.wow {
+  visibility: visible !important;
+}
+
+/* Base state for animations should be handled by WOW.js dynamically, but we ensure visibility here as a fallback */
