@@ -1,8 +1,13 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+// Deterministic color class so server and client render the same markup
+// (Math.random() during render caused a hydration mismatch).
+function categoryColorClass(category, title) {
+  if (category === 'Brakery') return '';
+  const hash = [...title].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+  return `color${(hash % 3) + 2}`;
+}
 
 export default function BlogCard({ image, category, title, author, date, metaImage, delay }) {
   return (
@@ -29,7 +34,7 @@ export default function BlogCard({ image, category, title, author, date, metaIma
               <i className="ion-arrow-right-c"></i>
             </Link>
           </div>
-          <span className={category === 'Brakery' ? '' : `color${Math.floor(Math.random() * 3) + 2}`}>{category}</span>
+          <span className={categoryColorClass(category, title)}>{category}</span>
           <h3>
             <Link href="/blog/lorem-ipsum">{title}</Link>
           </h3>

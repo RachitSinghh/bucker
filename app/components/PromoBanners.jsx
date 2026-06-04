@@ -22,7 +22,7 @@ export default function PromoBanners() {
                 <div className="banner_text">
                   <h3><span>70%</span> Sale Off</h3>
                   <h2>Best Quality <br /> Products</h2>
-                  <Link className="btn btn-link" href="/product">Shop Now</Link>
+                  <Link className="btn btn-link" href="/shop">Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -42,7 +42,7 @@ export default function PromoBanners() {
                 <div className="banner_text">
                   <h3><span>25%</span> Sale Off</h3>
                   <h2>Hot & Spicy <br /> Pastry</h2>
-                  <Link className="btn btn-link" href="/product">Shop Now</Link>
+                  <Link className="btn btn-link" href="/shop">Shop Now</Link>
                 </div>
               </div>
             </div>

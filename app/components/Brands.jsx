@@ -1,11 +1,6 @@
 'use client';
-import React from 'react';
-import Slider from 'react-slick';
 import Image from 'next/image';
-
-// Slick css
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from './DynamicSlider';
 
 const brands = [
   { img: '/img/others/brand1.webp', hoverImg: '/img/others/brand-hover1.webp' },
@@ -17,11 +12,6 @@ const brands = [
 ];
 
 export default function Brands() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const settings = {
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -44,22 +34,20 @@ export default function Brands() {
         <div className="row">
           <div className="col-12">
             <div className="brand_inner">
-              {mounted && (
-                <Slider {...settings}>
-                  {brands.map((brand, idx) => (
-                    <div key={idx}>
-                      <div className="single_brand">
-                        <a className="primary" href="#">
-                          <Image src={brand.img} alt="Brand" width={114} height={107} />
-                        </a>
-                        <a className="secondary" href="#">
-                          <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
-                        </a>
-                      </div>
+              <Slider {...settings}>
+                {brands.map((brand, idx) => (
+                  <div key={`${brand.img}-${idx}`}>
+                    <div className="single_brand">
+                      <a className="primary" href="#">
+                        <Image src={brand.img} alt="Brand" width={114} height={107} />
+                      </a>
+                      <a className="secondary" href="#">
+                        <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
+                      </a>
                     </div>
-                  ))}
-                </Slider>
-              )}
+                  </div>
+                ))}
+              </Slider>
             </div>
           </div>
         </div>

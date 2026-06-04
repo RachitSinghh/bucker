@@ -15,7 +15,7 @@ export default function Breadcrumbs({ title, parentTitle = 'Home', parentHref = 
               <h1>{title}</h1>
               <ul>
                 <li><Link href={parentHref}>{parentTitle}</Link></li>
-                <li> // {title}</li>
+                <li>{'//'} {title}</li>
               </ul>
             </div>
           </div>

@@ -1,12 +1,7 @@
 'use client';
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Slider from 'react-slick';
-
-// Slick css
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from './DynamicSlider';
 
 const products = [
   { id: 1, name: 'Products Name Here', image: '/img/product/product1.webp' },
@@ -20,11 +15,6 @@ const products = [
 ];
 
 export default function BestSellers() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -50,32 +40,30 @@ export default function BestSellers() {
           </p>
         </div>
         <div className="product_slick">
-          {mounted && (
-            <Slider {...settings}>
-              {products.map((product, index) => (
-                <div key={index}>
-                  <article className="single_product">
-                    <figure>
-                      <div className="product_thumb">
-                        <Link href="/shop/1">
-                          <Image 
-                            src={product.image} 
-                            alt={product.name} 
-                            width={268} 
-                            height={307} 
-                            style={{ width: '100%', height: 'auto' }}
-                          />
-                        </Link>
-                      </div>
-                      <figcaption className="product_content text-center">
-                        <h4><Link href="/product">{product.name}</Link></h4>
-                      </figcaption>
-                    </figure>
-                  </article>
-                </div>
-              ))}
-            </Slider>
-          )}
+          <Slider {...settings}>
+            {products.map((product) => (
+              <div key={product.id}>
+                <article className="single_product">
+                  <figure>
+                    <div className="product_thumb">
+                      <Link href={`/shop/${product.id}`}>
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={268}
+                          height={307}
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </Link>
+                    </div>
+                    <figcaption className="product_content text-center">
+                      <h4><Link href={`/shop/${product.id}`}>{product.name}</Link></h4>
+                    </figcaption>
+                  </figure>
+                </article>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </div>

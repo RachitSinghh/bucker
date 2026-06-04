@@ -17,11 +17,11 @@ export default function BannerFullWidth() {
               <p className="wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br /> tempor incididunt ut labore et dolore magna
               </p>
-              <Link className="btn btn-link wow fadeInUp" href="/product" data-wow-delay="0.3s" data-wow-duration="1.3s">
+              <Link className="btn btn-link wow fadeInUp" href="/shop" data-wow-delay="0.3s" data-wow-duration="1.3s">
                 Shop Now
               </Link>
             </div>
-          2</div>
+          </div>
         </div>
       </div>
     </div>

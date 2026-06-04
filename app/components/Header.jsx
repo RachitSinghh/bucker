@@ -13,17 +13,17 @@ export default function Header() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
   const toggleOffcanvas = () => {
-    setIsOffcanvasOpen(!isOffcanvasOpen);
+    setIsOffcanvasOpen((open) => !open);
     setIsCartOpen(false); // Ensure only one is open
     setActiveSubmenu(null);
   };
-  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const toggleSearch = () => setIsSearchOpen((open) => !open);
   const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
+    setIsCartOpen((open) => !open);
     setIsOffcanvasOpen(false); // Ensure only one is open
   };
   const toggleSubmenu = (name) => {
-    setActiveSubmenu(activeSubmenu === name ? null : name);
+    setActiveSubmenu((curr) => (curr === name ? null : name));
   };
 
   const isActive = (path) => pathname === path || (path !== '/' && pathname?.startsWith(path));
@@ -145,7 +145,7 @@ export default function Header() {
                         Pages <i className={`ion-ios-arrow-${activeSubmenu === 'pages' ? 'up' : 'down'} ms-2`}></i>
                       </button>
                       <ul className="sub-menu">
-                        <li><Link href="/faq" onClick={toggleOffcanvas}>FAQ</Link></li>
+                        <li><Link href="/contact" onClick={toggleOffcanvas}>FAQ</Link></li>
                         <li><Link href="/404" onClick={toggleOffcanvas}>Error 404</Link></li>
                       </ul>
                     </li>
@@ -241,7 +241,7 @@ export default function Header() {
                           <li><Link href="/blog/test-post">Blog Details</Link></li>
                         </ul>
                       </li>
-                      <li><Link href="/faq" className={isActive('/faq') ? 'active' : ''}>FAQ</Link></li>
+                      <li><Link href="/contact" className={isActive('/faq') ? 'active' : ''}>FAQ</Link></li>
                       <li><Link href="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link></li>
                     </ul>
                   </nav>

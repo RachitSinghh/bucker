@@ -1,12 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Slider from 'react-slick';
-
-// Slick css
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const productsData = {
   features: [
@@ -41,12 +36,15 @@ const productsData = {
   ]
 };
 
-export default function ProductTabs() {
-  const [activeTab, setActiveTab] = useState('features');
+const TABS = [
+  { id: 'features', label: 'Our Features' },
+  { id: 'seller', label: 'Best Sellers' },
+  { id: 'sales', label: 'New Items' },
+];
 
-  // To mimic a grid, React-Slick is not used for this section in the template natively. 
-  // Wait, ProductTabs section in HTML uses standard grid (`row` > `col-lg-3 col-md-4 col-sm-6`).
-  // So it's just mapping the active tab's array and outputting columns!
+export default function ProductTabs() {
+  // This section is a plain Bootstrap grid in the template — no carousel.
+  const [activeTab, setActiveTab] = useState('features');
 
   return (
     <div className="product_section mb-80 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">
@@ -57,105 +55,41 @@ export default function ProductTabs() {
           </div>
           <div className="product_tab_button">
             <ul className="nav justify-content-center" role="tablist" id="nav-tab">
-              <li>
-                <a className={activeTab === 'features' ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveTab('features'); }} href="#">Our Features</a>
-              </li>
-              <li>
-                <a className={activeTab === 'seller' ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveTab('seller'); }} href="#">Best Sellers</a>
-              </li>
-              <li>
-                <a className={activeTab === 'sales' ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveTab('sales'); }} href="#">New Items</a>
-              </li>
+              {TABS.map((tab) => (
+                <li key={tab.id}>
+                  <a
+                    className={activeTab === tab.id ? 'active' : ''}
+                    onClick={(e) => { e.preventDefault(); setActiveTab(tab.id); }}
+                    href="#"
+                  >
+                    {tab.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="tab-content product_container">
-          <div className={`tab-pane fade ${activeTab === 'features' ? 'show active' : ''}`}>
+          <div className="tab-pane fade show active">
             <div className="product_gallery">
               <div className="row">
-                {productsData.features.map((product, index) => (
-                  <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
+                {productsData[activeTab].map((product) => (
+                  <div className="col-lg-3 col-md-4 col-sm-6" key={product.id}>
                     <article className="single_product">
                       <figure>
                         <div className="product_thumb">
                           <Link href={`/shop/${product.id}`}>
-                            <Image 
-                              src={product.image} 
-                              alt={product.name} 
-                              width={268} 
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              width={268}
                               height={307}
                               style={{ width: '100%', height: 'auto' }}
                             />
                           </Link>
                         </div>
                         <figcaption className="product_content text-center">
-                          <h4><Link href="/product">{product.name}</Link></h4>
-                          {product.price && (
-                            <div className="price_box">
-                              <span className="current_price">{product.price}</span>
-                            </div>
-                          )}
-                        </figcaption>
-                      </figure>
-                    </article>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={`tab-pane fade ${activeTab === 'seller' ? 'show active' : ''}`}>
-            <div className="product_gallery">
-              <div className="row">
-                {productsData.seller.map((product, index) => (
-                  <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
-                    <article className="single_product">
-                      <figure>
-                        <div className="product_thumb">
-                          <Link href={`/shop/${product.id}`}>
-                            <Image 
-                              src={product.image} 
-                              alt={product.name} 
-                              width={268} 
-                              height={307}
-                              style={{ width: '100%', height: 'auto' }}
-                            />
-                          </Link>
-                        </div>
-                        <figcaption className="product_content text-center">
-                          <h4><Link href="/product">{product.name}</Link></h4>
-                          {product.price && (
-                            <div className="price_box">
-                              <span className="current_price">{product.price}</span>
-                            </div>
-                          )}
-                        </figcaption>
-                      </figure>
-                    </article>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={`tab-pane fade ${activeTab === 'sales' ? 'show active' : ''}`}>
-            <div className="product_gallery">
-              <div className="row">
-                {productsData.sales.map((product, index) => (
-                  <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
-                    <article className="single_product">
-                      <figure>
-                        <div className="product_thumb">
-                          <Link href={`/shop/${product.id}`}>
-                            <Image 
-                              src={product.image} 
-                              alt={product.name} 
-                              width={268} 
-                              height={307}
-                              style={{ width: '100%', height: 'auto' }}
-                            />
-                          </Link>
-                        </div>
-                        <figcaption className="product_content text-center">
-                          <h4><Link href="/product">{product.name}</Link></h4>
+                          <h4><Link href={`/shop/${product.id}`}>{product.name}</Link></h4>
                           {product.price && (
                             <div className="price_box">
                               <span className="current_price">{product.price}</span>

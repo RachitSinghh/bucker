@@ -100,13 +100,13 @@ export default function Footer() {
                     <h3>Account</h3>
                     <div className="footer_menu">
                       <ul>
-                        <li><Link href="/my-account">My account</Link></li>
+                        <li><Link href="/contact">My account</Link></li>
                         <li><Link href="/contact">My orders</Link></li>
                         <li><Link href="/contact">Returns</Link></li>
                         <li><Link href="/contact">Shipping</Link></li>
-                        <li><Link href="/wishlist">Wishlist</Link></li>
+                        <li><Link href="/contact">Wishlist</Link></li>
                         <li><Link href="/about">How Does It Work</Link></li>
-                        <li><Link href="/login-register">Merchant Sign Up</Link></li>
+                        <li><Link href="/contact">Merchant Sign Up</Link></li>
                       </ul>
                     </div>
                   </div>
