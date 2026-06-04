@@ -1,14 +1,10 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Slider from 'react-slick';
+import DynamicSlider from '../components/DynamicSlider';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Brands from '../components/Brands';
 import Services from '../components/Services';
-
-// Slick css
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const teamMembers = [
   { name: 'Kianna Pham', role: 'Team Member', img: '/img/others/team1.webp' },
@@ -146,7 +142,7 @@ export default function AboutPage() {
           <div className="row">
             <div className="col-12">
               <div className="testimonial_wrapper">
-                <Slider {...testimonialSettings}>
+                <DynamicSlider {...testimonialSettings}>
                   {testimonials.map((testi, idx) => (
                     <div key={idx}>
                       <div className="testimonial_inner d-flex align-items-center">
@@ -172,7 +168,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                   ))}
-                </Slider>
+                </DynamicSlider>
               </div>
             </div>
           </div>
