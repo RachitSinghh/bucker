@@ -12,6 +12,11 @@ const brands = [
 ];
 
 export default function Brands() {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const settings = {
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -34,6 +39,7 @@ export default function Brands() {
         <div className="row">
           <div className="col-12">
             <div className="brand_inner">
+<<<<<<< HEAD
               <Slider {...settings}>
                 {brands.map((brand, idx) => (
                   <div key={`${brand.img}-${idx}`}>
@@ -44,10 +50,24 @@ export default function Brands() {
                       <a className="secondary" href="#">
                         <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
                       </a>
+=======
+              {mounted && (
+                <Slider {...settings}>
+                  {brands.map((brand, idx) => (
+                    <div key={idx}>
+                      <div className="single_brand">
+                        <a className="primary" href="#">
+                          <Image src={brand.img} alt="Brand" width={114} height={107} />
+                        </a>
+                        <a className="secondary" href="#">
+                          <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
+                        </a>
+                      </div>
+>>>>>>> 62243e1878f9e058232846dbe8a088f39448a345
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+              )}
             </div>
           </div>
         </div>
