@@ -22,7 +22,10 @@
     18-compare
     19-checkout
 */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+/* Google Fonts (Playfair Display + Roboto) are loaded via a <link> in
+   app/layout.js. They were moved out of this stylesheet because an @import
+   buried mid-bundle is invalid CSS (@import must precede other rules) and the
+   PostCSS pipeline rejects it. */
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

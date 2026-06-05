@@ -9,34 +9,35 @@ function categoryColorClass(category, title) {
   return `color${(hash % 3) + 2}`;
 }
 
-export default function BlogCard({ image, category, title, author, date, metaImage, delay }) {
+export default function BlogCard({ slug, id, image, category, title, author, date, metaImage, delay }) {
+  const href = `/blog/${slug || id || ''}`;
   return (
     <div className="col-lg-6 col-md-6 col-sm-6">
-      <div 
-        className="single_blog wow fadeInUp" 
+      <div
+        className="single_blog wow fadeInUp"
         data-wow-delay={delay}
         data-wow-duration="1.1s"
       >
         <div className="blog_thumb">
-          <Link href="/blog/lorem-ipsum">
-            <Image 
-              src={image} 
-              alt={title} 
-              width={370} 
-              height={250} 
+          <Link href={href}>
+            <Image
+              src={image}
+              alt={title}
+              width={370}
+              height={250}
               style={{ width: '100%', height: 'auto' }}
             />
           </Link>
         </div>
         <div className="blog_content">
           <div className="blog_arrow_btn">
-            <Link href="/blog/lorem-ipsum">
+            <Link href={href}>
               <i className="ion-arrow-right-c"></i>
             </Link>
           </div>
           <span className={categoryColorClass(category, title)}>{category}</span>
           <h3>
-            <Link href="/blog/lorem-ipsum">{title}</Link>
+            <Link href={href}>{title}</Link>
           </h3>
           <div className="blog__meta d-flex align-items-center">
             <div className="blog__meta__thumb">

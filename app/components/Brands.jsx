@@ -1,23 +1,9 @@
 'use client';
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Slider from './DynamicSlider';
 
-const brands = [
-  { img: '/img/others/brand1.webp', hoverImg: '/img/others/brand-hover1.webp' },
-  { img: '/img/others/brand2.webp', hoverImg: '/img/others/brand-hover2.webp' },
-  { img: '/img/others/brand3.webp', hoverImg: '/img/others/brand-hover3.webp' },
-  { img: '/img/others/brand4.webp', hoverImg: '/img/others/brand-hover4.webp' },
-  { img: '/img/others/brand5.webp', hoverImg: '/img/others/brand-hover5.webp' },
-  { img: '/img/others/brand1.webp', hoverImg: '/img/others/brand-hover1.webp' },
-];
-
-export default function Brands() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+// Brand logos now come from the CMS (T-018) via props.
+export default function Brands({ brands = [] }) {
   const settings = {
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -42,13 +28,13 @@ export default function Brands() {
             <div className="brand_inner">
               <Slider {...settings}>
                 {brands.map((brand, idx) => (
-                  <div key={`${brand.img}-${idx}`}>
+                  <div key={brand.id || `${brand.image}-${idx}`}>
                     <div className="single_brand">
-                      <a className="primary" href="#">
-                        <Image src={brand.img} alt="Brand" width={114} height={107} />
+                      <a className="primary" href={brand.link || '#'}>
+                        <Image src={brand.image} alt="Brand" width={114} height={107} />
                       </a>
-                      <a className="secondary" href="#">
-                        <Image src={brand.hoverImg} alt="Brand Hover" width={114} height={107} />
+                      <a className="secondary" href={brand.link || '#'}>
+                        <Image src={brand.hoverImage || brand.image} alt="Brand Hover" width={114} height={107} />
                       </a>
                     </div>
                   </div>
