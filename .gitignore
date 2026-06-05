@@ -50,3 +50,29 @@ branch_structure.json
 .agents
 CLAUDE.md
 SKILL.md
+.claude/
+skills-lock.json
+PROJECT_OVERVIEW.md
+.claude/skills-lock.json
+
+# editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# logs / caches / temp
+*.log
+.eslintcache
+.cache/
+*.bak
+*.tmp
+*.orig

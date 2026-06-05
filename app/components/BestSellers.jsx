@@ -1,26 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Slider from './DynamicSlider';
 
-const products = [
-  { id: 1, name: 'Products Name Here', image: '/img/product/product1.webp' },
-  { id: 2, name: 'Lorem, ipsum dolor.', image: '/img/product/product2.webp' },
-  { id: 3, name: 'Praesentium vero nesciu.', image: '/img/product/product3.webp' },
-  { id: 4, name: 'Sit amet consectetur elit.', image: '/img/product/product4.webp' },
-  { id: 5, name: 'Atque earum ullam non.', image: '/img/product/product5.webp' },
-  { id: 6, name: 'Modi excepturi ut ipsam.', image: '/img/product/product6.webp' },
-  { id: 7, name: 'Provident odio, are Unde.', image: '/img/product/product7.webp' },
-  { id: 8, name: 'Products Name Here', image: '/img/product/product1.webp' }
-];
-
-export default function BestSellers() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+// Products now come from the CMS (T-018) via props; the react-slick slider and
+// markup are unchanged.
+export default function BestSellers({ products = [] }) {
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -52,7 +37,7 @@ export default function BestSellers() {
                 <article className="single_product">
                   <figure>
                     <div className="product_thumb">
-                      <Link href={`/shop/${product.id}`}>
+                      <Link href={`/shop/${product.slug || product.id}`}>
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -63,7 +48,7 @@ export default function BestSellers() {
                       </Link>
                     </div>
                     <figcaption className="product_content text-center">
-                      <h4><Link href={`/shop/${product.id}`}>{product.name}</Link></h4>
+                      <h4><Link href={`/shop/${product.slug || product.id}`}>{product.name}</Link></h4>
                     </figcaption>
                   </figure>
                 </article>

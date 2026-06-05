@@ -1,46 +1,36 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getSettings } from '../lib/cms/content';
 
-export default function Footer() {
+// Footer is an async Server Component reading the global settings singleton
+// (T-016 / T-018). It is rendered by the root layout and passed into SiteChrome
+// so the storefront keeps server-rendered footer content.
+export default async function Footer() {
+  const settings = (await getSettings()) || {};
+  const shipping = settings.shipping || [];
+  const infoLinks = settings.infoLinks || [];
+  const accountLinks = settings.accountLinks || [];
+  const phones = settings.phones || [];
+
   return (
     <footer className="footer_widgets">
       <div className="container">
         <div className="shipping_area">
           <div className="row">
-            <div className="col-lg-4 col-md-4 col-sm-6">
-              <div className="single_shipping d-flex align-items-center">
-                <div className="shipping_icon">
-                  <Image src="/img/others/shipping1.webp" alt="Shipping" width={70} height={70} />
-                </div>
-                <div className="shipping_text">
-                  <h3>Free Shipping</h3>
-                  <p>Capped at $39 per order</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-6">
-              <div className="single_shipping d-flex align-items-center">
-                <div className="shipping_icon">
-                  <Image src="/img/others/shipping2.webp" alt="Payments" width={70} height={70} />
-                </div>
-                <div className="shipping_text">
-                  <h3>Card Payments</h3>
-                  <p>12 Months Installments</p>
+            {shipping.map((item, idx) => (
+              <div className="col-lg-4 col-md-4 col-sm-6" key={idx}>
+                <div className="single_shipping d-flex align-items-center">
+                  <div className="shipping_icon">
+                    {item.image && <Image src={item.image} alt={item.title} width={70} height={70} />}
+                  </div>
+                  <div className="shipping_text">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-6">
-              <div className="single_shipping d-flex align-items-center">
-                <div className="shipping_icon">
-                  <Image src="/img/others/shipping3.webp" alt="Returns" width={70} height={70} />
-                </div>
-                <div className="shipping_text">
-                  <h3>Easy Returns</h3>
-                  <p>Shop Wwith Confidence</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="main_footer">
@@ -52,7 +42,7 @@ export default function Footer() {
                   <div className="footer_contact_desc">
                     <p>
                       If you have any question.please contact us at{' '}
-                      <a href="mailto:demo@example.com">demo@example.com</a>
+                      <a href={`mailto:${settings.contactEmail || ''}`}>{settings.contactEmail}</a>
                     </p>
                   </div>
                   <div className="footer_contact_info">
@@ -61,7 +51,7 @@ export default function Footer() {
                         <span className="pe-7s-map-marker"></span>
                       </div>
                       <div className="footer_contact_info_text">
-                        <p>Your address goes here. 123, Address.</p>
+                        <p>{settings.address}</p>
                       </div>
                     </div>
                     <div className="footer_contact_info_list d-flex align-items-center">
@@ -70,12 +60,11 @@ export default function Footer() {
                       </div>
                       <div className="footer_contact_info_text">
                         <ul>
-                          <li>
-                            <a href="tel:+0123456789">+ 0 123 456 789</a>
-                          </li>
-                          <li>
-                            <a href="tel:+0123456789">+ 0 123 456 789</a>
-                          </li>
+                          {phones.map((phone, idx) => (
+                            <li key={idx}>
+                              <a href={`tel:${String(phone).replace(/\s+/g, '')}`}>{phone}</a>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -86,13 +75,9 @@ export default function Footer() {
                     <h3>Information</h3>
                     <div className="footer_menu">
                       <ul>
-                        <li><Link href="/about">About us</Link></li>
-                        <li><Link href="/contact">Delivery information</Link></li>
-                        <li><Link href="/contact">Privacy Policy</Link></li>
-                        <li><Link href="/contact">Sales</Link></li>
-                        <li><Link href="/contact">Terms & Conditions</Link></li>
-                        <li><Link href="/contact">Shipping Policy</Link></li>
-                        <li><Link href="/contact">EMI Payment</Link></li>
+                        {infoLinks.map((link, idx) => (
+                          <li key={idx}><Link href={link.href || '#'}>{link.label}</Link></li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -100,13 +85,9 @@ export default function Footer() {
                     <h3>Account</h3>
                     <div className="footer_menu">
                       <ul>
-                        <li><Link href="/contact">My account</Link></li>
-                        <li><Link href="/contact">My orders</Link></li>
-                        <li><Link href="/contact">Returns</Link></li>
-                        <li><Link href="/contact">Shipping</Link></li>
-                        <li><Link href="/contact">Wishlist</Link></li>
-                        <li><Link href="/about">How Does It Work</Link></li>
-                        <li><Link href="/contact">Merchant Sign Up</Link></li>
+                        {accountLinks.map((link, idx) => (
+                          <li key={idx}><Link href={link.href || '#'}>{link.label}</Link></li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -116,7 +97,7 @@ export default function Footer() {
                   <div className="footer_newsletter">
                     <div className="newsletter_desc">
                       <p>
-                        If you have any question.please contact us at{' '}
+                        {settings.newsletterText || 'If you have any question.please contact us'} at{' '}
                         <Link href="/contact">Send Us a Email</Link>
                       </p>
                     </div>
@@ -152,10 +133,7 @@ export default function Footer() {
         </div>
         <div className="footer_bottom">
           <div className="copyright_right text-center">
-            <p>
-              © 2025 <Link href="/"> JD Milk</Link> Made with{' '}
-              <i className="ion-heart"></i> by <a href="#">Foods Sweet</a>
-            </p>
+            <p>{settings.copyright || '© 2025 JD Milk'}</p>
           </div>
         </div>
       </div>

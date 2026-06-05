@@ -1,58 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Slider from './DynamicSlider';
 
-const blogs = [
-  {
-    id: 1,
-    category: 'Bakery',
-    title: 'Lorem ipsum dolor sit amet consepy.',
-    image: '/img/blog/blog1.webp',
-    author: 'Admin',
-    date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img1.webp',
-    colorClass: ''
-  },
-  {
-    id: 2,
-    category: 'Bakery',
-    title: 'Lorem ipsum dolor sit, elit, dolores is .',
-    image: '/img/blog/blog1.webp', // reusing blog1 as template
-    author: 'Admin',
-    date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img2.webp',
-    colorClass: 'color2'
-  },
-  {
-    id: 3,
-    category: 'Bakery',
-    title: 'harum dolorum culpa quas are veniam',
-    image: '/img/blog/blog1.webp',
-    author: 'Admin',
-    date: '22 Aug, 2025',
-    metaImage: '/img/others/meta-img3.webp',
-    colorClass: 'color3'
-  },
-  {
-    id: 4,
-    category: 'Bakery',
-    title: 'There are many of Lorem Ipsum.',
-    image: '/img/blog/blog1.webp',
-    author: 'Admin',
-    date: '22 Aug, 2021',
-    metaImage: '/img/others/meta-img1.webp',
-    colorClass: ''
-  }
-];
-
-export default function LatestBlog() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+// Blog posts now come from the CMS (T-018) via props. Links point to the real
+// /blog/[slug] pages.
+export default function LatestBlog({ blogs = [] }) {
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -78,15 +31,15 @@ export default function LatestBlog() {
         </div>
         <div className="blog_inner">
           <Slider {...settings}>
-            {blogs.map((blog, idx) => (
-              <div key={idx} className="px-2">
+            {blogs.map((blog) => (
+              <div key={blog.id} className="px-2">
                 <div className="single_blog">
                   <div className="blog_thumb">
-                    <Link href="/blog/lorem-ipsum">
-                      <Image 
-                        src={blog.image} 
-                        alt={blog.title} 
-                        width={370} 
+                    <Link href={`/blog/${blog.slug || blog.id}`}>
+                      <Image
+                        src={blog.image}
+                        alt={blog.title}
+                        width={370}
                         height={260}
                         style={{ width: '100%', height: 'auto' }}
                       />
@@ -94,13 +47,13 @@ export default function LatestBlog() {
                   </div>
                   <div className="blog_content">
                     <div className="blog_arrow_btn">
-                      <Link href="/blog-detail"><i className="ion-arrow-right-c"></i></Link>
+                      <Link href={`/blog/${blog.slug || blog.id}`}><i className="ion-arrow-right-c"></i></Link>
                     </div>
                     <span className={blog.colorClass}>{blog.category}</span>
-                    <h3><Link href="/blog-detail">{blog.title}</Link></h3>
+                    <h3><Link href={`/blog/${blog.slug || blog.id}`}>{blog.title}</Link></h3>
                     <div className="blog__meta d-flex align-items-center">
                       <div className="blog__meta__thumb">
-                        <Image src={blog.metaImage} alt="Author" width={40} height={40} />
+                        {blog.metaImage && <Image src={blog.metaImage} alt="Author" width={40} height={40} />}
                       </div>
                       <div className="blog__meta__text">
                         <ul className="d-flex">
