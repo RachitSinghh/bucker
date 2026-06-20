@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Block commits that carry the config-file RCE worm before they enter history.
+# Enabled via `git config core.hooksPath .githooks` (set automatically by the
+# package.json "prepare" script after `npm install`).
+exec node scripts/scan-malware.mjs

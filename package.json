@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "scan:malware": "node scripts/scan-malware.mjs",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -21,6 +23,7 @@
     "firebase": "^12.14.0",
     "firebase-admin": "^13.10.0",
     "framer-motion": "^12.38.0",
+    "lazycommitt": "^1.0.19",
     "lucide-react": "^1.17.0",
     "next": "16.2.4",
     "nodemailer": "^8.0.10",
